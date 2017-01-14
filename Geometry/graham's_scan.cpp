@@ -9,13 +9,13 @@
 // =====================================================================================
 
 // O(nlgn) convex hull
-vector<point> graham(vector<point> input){
+vector<point> graham(vector<point>& input){
 	int n = input.size();
 	vector<point> hull;
-	static point up[n], down[n];
+	vector<point> up(n), down(n);
 	int idx, iup, idown;
 	iup = idown = -1;
-	sort(intput,  input + n);
+	sort(input,  input + n);
 	for(int i=0;i<n;i++){
 		while(iup>0&&ccw(up[iup-1], up[iup], input[i])>0)
 			iup--;
