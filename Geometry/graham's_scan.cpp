@@ -15,7 +15,7 @@ vector<point> graham(vector<point>& input){
 	vector<point> up(n), down(n);
 	int idx, iup, idown;
 	iup = idown = -1;
-	sort(input,  input + n);
+	sort(input.begin(),  input.end());
 	for(int i=0;i<n;i++){
 		while(iup>0&&ccw(up[iup-1], up[iup], input[i])>0)
 			iup--;
