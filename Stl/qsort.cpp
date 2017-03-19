@@ -27,7 +27,7 @@ void _sort(It begin, It end, Comp comp){
 	It le = begin + 1;
 	It ri = end - 1;
 	while( le <= ri ) {
-		while(le <= ri && comp(*le, *pi))
+		while(le <= ri && !comp(*pi, *ri))
 			le++;
 		while(le <= ri && !comp(*ri, *pi))
 			ri--;
