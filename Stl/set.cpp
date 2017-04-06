@@ -12,7 +12,7 @@
 using namespace std;
 
 template <class T>
-class Treap {
+class _set {
 public:
 	struct Node {
 		T val;
@@ -38,7 +38,7 @@ public:
 	};
 
 	Node *root;
-	Treap():root(0){}
+	_set():root(0){}
 	pair<Node*, Node*> split(Node *root, T val) {
 		if (root == 0)
 			return{ 0,0 };
