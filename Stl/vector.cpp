@@ -14,48 +14,46 @@ using namespace std;
 template <class T>
 class _vector {
 public:
-	int n;
 	int _size;
+	int capacity;
 	T *arr;
 	_vector() {
-		n = 0;
-		_size = 32;
-		arr = new T[_size];
+		_size = 0;
+		capacity = 32;
+		arr = new T[capacity];
 	}
 	_vector(int k) {
-		n = k;
 		_size = k;
-		arr = new T[_size];
+		capacity = k;
+		arr = new T[capacity];
 	}
 	void resize(int k) {
 		T *temp;
 		temp = new T[k];
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < _size; i++)
 			temp[i] = arr[i];
 		delete[] arr;
 		arr = temp;
-		n=k;
+		_size=capacity=k;
 	}
 	int size() const{
-		return n;
+		return _size;
 	}
 	T* begin() const{
 		return &arr[0];
 	}
 	T* end() const{
-		return &arr[0] + n;
+		return &arr[0] + _size;
 	}
 	void push_back(T val) {
-		if (n == _size) {
+		if (_size == capacity) {
 			resize(_size * 2);
-			n=_size;
-			_size *= 2;
+			_size /=2;
 		}
-		arr[n] = val;
-		n++;
+		arr[_size++] = val;
 	}
 	void pop_back() {
-		n--;
+		_size--;
 	}
 	T& operator [](int idx) {
 		return arr[idx];

@@ -74,22 +74,3 @@ public:
 		return total_flow;
 	}
 };
-int n;
-vector<vector<int> > adj;
-int main(){
-	while(scanf("%d", &n)!=EOF){
-		adj.clear();
-		adj.resize(n);
-		for(int i=0;i<n;i++){
-			int a, b;
-			scanf("%d: (%d)", &a, &b);
-			for(int j=0;j<b;j++){
-				int in;
-				scanf("%d", &in);
-				adj[a].push_back(in-n);
-			}
-		}
-		Hk hk(adj);
-		printf("%d\n", hk.flow());
-	}
-}
