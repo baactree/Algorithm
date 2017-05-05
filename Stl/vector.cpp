@@ -27,6 +27,15 @@ public:
 		capacity = k;
 		arr = new T[capacity];
 	}
+	~_vector(){
+		delete[] arr;
+	}
+	void clear(){
+		delete[] arr;
+		_size = 0;
+		capacity = 32;
+		arr = new T[capacity];
+	}
 	void resize(int k) {
 		T *temp;
 		temp = new T[k];
