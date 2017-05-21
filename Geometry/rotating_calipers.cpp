@@ -19,7 +19,7 @@ double calipus(const vector<point>& p){
 		int ni=(i+1)%n;
 		while(true){
 			int nj=(j+1)%m;
-			if(ccw(hull[ni]-hull[i], hull[nj]-hull[j])>0)
+			if(ccw(hull[ni]-hull[i], hull[nj]-hull[j])<0)
 				j=nj;
 			else
 				break;
