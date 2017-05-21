@@ -1,4 +1,5 @@
 struct MCMF {
+	const int INF=0x3f3f3f3f;
 	int V, totalFlow, totalCost;
 	struct Edge {
 		int target, capacity, cost, flow;
