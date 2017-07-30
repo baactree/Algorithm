@@ -50,3 +50,19 @@ struct point{
 	}
 };
 
+//수직이등분선 <점,방향벡터>
+pair<point, point> perpendicular_bisector(const point &a, const point &b) {
+	point c = b - a;
+	return make_pair(point((a.x + b.x) / 2, (a.y + b.y) / 2), point(c.y, -c.x));
+}
+//두 직선의 교점 리턴
+point intersection_point(const point &a, const point &b, const point &c, const point &d) {
+	double det = b.cross(d);
+	return a + b*((c - a).cross(d) / det);
+}
+//세 점의 외접원의 중점 구하기
+point circumscribed_circle(const point &p, const point &a, const point &b) {
+	pair<point, point> pa = perpendicular_bisector(p, a);
+	pair<point, point> pb = perpendicular_bisector(p, b);
+	return intersection_point(pa.first, pa.second, pb.first, pb.second);
+}

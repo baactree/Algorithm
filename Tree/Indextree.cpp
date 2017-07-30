@@ -18,53 +18,37 @@ struct Indextree{
 		n=1;
 		while(n<arr.size())
 			n*=2;
-		n*=2;
-		tree=vector<T>(n, 0);
+		tree=vector<T>(n*2, 0);
 		init(arr);
 	}
 	void init(const vector<T> &arr){
 		for(int i=0;i<arr.size();i++){
-			tree[n/2+i]=arr[i];
-			int idx=n/2+i;
-			while(idx>1){
-				tree[idx/2]+=arr[i];
-				idx/=2;
+			int idx=n+i;
+			while(idx){
+				tree[idx]+=arr[i];
+				idx >>= 1;
 			}
 		}
 	}
 	T query(int a, int b){
 		T ret=0;
-		a+=n/2;
-		b+=n/2;
+		a+=n;
+		b+=n;
 		while(a<=b){
-			if(a==b){
-				ret+=tree[a];
-				break;
-			}
-			if(a&1){
-				ret+=tree[a];
-				a/=2;
-				a++;
-			}
-			else
-				a/=2;
-			if(b&1)
-				b/=2;
-			else{
-				ret+=tree[b];
-				b/=2;
-				b--;
-			}
+			if(a&1)
+				ret+=tree[a++];
+			if(!(b&1))
+				ret+=tree[b--];
+			a >>= 1;
+			b >>= 1;
 		}
 		return ret;
 	}
 	void update(int a, T b){
-		a+=n/2;
-		T temp=tree[a];
-		tree[a]=b;
-		while(a>1){
-			tree[a/2]=tree[a/2]-temp+b;
-			a/=2;
+		a+=n;
+		while(a){
+			tree[a] += b;
+			a >>= 1;
 		}
 	}
 };
@@ -79,6 +63,8 @@ int main(){
 		long long a, b, c;
 		scanf("%lld%lld%lld", &a, &b, &c);
 		if(a==1){
+			long long diff = c - arr[b - 1];
+			arr[b - 1] += diff;
 			idtree.update(b-1, c);		
 		}
 		else{
