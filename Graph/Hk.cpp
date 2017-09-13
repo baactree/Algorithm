@@ -18,11 +18,13 @@ public:
 	vector<int> level;
 	vector<bool> trip;
 	vector<vector<int> > &adj;
+	vector<int> idx;
 	Hk(vector<vector<int> > &adj):adj(adj){
 		n=adj.size();
 		b=vector<int>(n);
 		level=vector<int>(n);
 		trip=vector<bool>(n);
+		idx=vector<int>(n);
 	}
 	void bfs(){
 		fill(level.begin(), level.end(), -1);
@@ -46,7 +48,7 @@ public:
 		}
 	}
 	bool dfs(int now){
-		for(int i=0;i<adj[now].size();i++){
+		for(int &i=idx[now];i<adj[now].size();i++){
 			int there=adj[now][i];
 			if(b[there]==-1||(level[b[there]]==level[now]+1&&dfs(b[there]))){
 				trip[now]=true;
@@ -63,6 +65,7 @@ public:
 		while(true){
 			bfs();
 			int flow=0;
+			fill(idx.begin(), idx.end(), 0);
 			for(int i=0;i<n;i++){
 				if(!trip[i]&&dfs(i))
 					flow++;
