@@ -33,6 +33,11 @@ public:
 		idx=vector<int>(n);
 		adj=vector<vector<Edge*> > (n);
 	}
+	~Dinic(){
+		for(int i=0;i<n;i++)
+			for(int j=0;j<adj[i].size();j++)
+				delete adj[i][j];
+	}
 	void make_edge(int u, int v, int capacity){
 		Edge *uv=new Edge(v, capacity);
 		Edge *vu=new Edge(u, 0);

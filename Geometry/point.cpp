@@ -11,8 +11,10 @@
 const double PI = 2.0 * acos(0.0);
 
 struct point{
-	double x, y;
-	explicit point(double x = 0, double y = 0) :x(x), y(y) {}
+	typedef long long T;
+	T x, y;
+	point(){}
+	point(T x, T y) :x(x), y(y) {}
 	bool operator == (const point& rhs)const {
 		return x == rhs.x&&y == rhs.y;
 	}
@@ -25,7 +27,7 @@ struct point{
 	point operator - (const point&rhs)const {
 		return point(x - rhs.x, y - rhs.y);
 	}
-	point operator * (int rhs)const {
+	point operator * (T rhs)const {
 		return point(x*rhs, y*rhs);
 	}
 	// 벡터의 길이
@@ -41,11 +43,11 @@ struct point{
 		return fmod(atan2(y, x)+2*PI, 2*PI);
 	}
 	//내적
-	double dot(const point&rhs)const {
+	T dot(const point&rhs)const {
 		return x*rhs.x + y*rhs.y;
 	}
 	//외적
-	double cross(const point&rhs)const {
+	T cross(const point&rhs)const {
 		return x*rhs.y - rhs.x*y;
 	}
 };
