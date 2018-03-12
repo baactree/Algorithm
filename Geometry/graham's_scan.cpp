@@ -1,13 +1,3 @@
-// =====================================================================================
-// 
-//       Filename:  graham's_scan.cpp
-//        Created:  2017년 01월 15일 03시 00분 15초
-//       Compiler:  g++ -O2 -std=c++14
-//         Author:  baactree ,  bsj0206@naver.com
-//        Company:  Chonnam National University
-// 
-// =====================================================================================
-
 // O(nlgn) convex hull
 vector<point> graham(vector<point>& input){
 	int n = input.size();

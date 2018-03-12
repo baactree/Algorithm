@@ -1,13 +1,3 @@
-// =====================================================================================
-// 
-//       Filename:  kmp.cpp
-//        Created:  2017년 01월 20일 19시 43분 38초
-//       Compiler:  g++ -O2 -std=c++14
-//         Author:  baactree ,  bsj0206@naver.com
-//        Company:  Chonnam National University
-// 
-// =====================================================================================
-
 class Kmp {
 public:
 	vector<int> get_pi(const string& N) {

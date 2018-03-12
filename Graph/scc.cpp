@@ -1,15 +1,3 @@
-// =====================================================================================
-// 
-//       Filename:  scc.cpp
-//        Created:  2017년 03월 22일 15시 01분 57초
-//       Compiler:  g++ -O2 -std=c++14
-//         Author:  baactree ,  bsj0206@naver.com
-//        Company:  Chonnam National University
-// 
-// =====================================================================================
-
-#include <bits/stdc++.h>
-using namespace std;
 struct Scc{
 	vector<vector<int>> adj;
 	vector<int> scc;
@@ -18,9 +6,8 @@ struct Scc{
 	int vertex_count;
 	int scc_count;
 	int v;
-	Scc(const vector<vector<int>> &adj){
+	Scc(const vector<vector<int>> &adj):adj(adj){
 		v=adj.size()-1;
-		this->adj=adj;
 		scc=vector<int>(v+1, -1);
 		discoverd=vector<int>(v+1, -1);
 		vertex_count=0;

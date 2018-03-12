@@ -1,13 +1,3 @@
-// =====================================================================================
-// 
-//       Filename:  suffixarray.cpp
-//        Created:  2017년 06월 27일 14시 58분 28초
-//       Compiler:  g++ -O2 -std=c++14
-//         Author:  baactree ,  bsj0206@naver.com
-//        Company:  Chonnam National University
-// 
-// =====================================================================================
-
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -11,22 +11,29 @@
 //
 // 일차 합동 방정식 ax=c(mod b)
 // ax+by=c 의 해를 구하면 됨
-pair<ll,pair<ll,ll> > gcd(ll a,ll b){
-    deque<ll> r,s,t;
-    r.push_back(a);
-    r.push_back(b);
-    s.push_back(1);
-    s.push_back(0);
-    t.push_back(0);
-    t.push_back(1);
-    while(r.back()){
-        ll q=r[0]/r[1];
-        r.push_back(r[0]-q*r[1]);
-        s.push_back(s[0]-q*s[1]);
-        t.push_back(t[0]-q*t[1]);
-        r.pop_front();
-        s.pop_front();
-        t.pop_front();
+typedef long long ll;
+pair<ll, pair<ll, ll> > gcd(ll a, ll b){
+    ll r, r1, r2;
+    ll s, s1, s2;
+    ll t, t1, t2;
+    r1 = a;
+    r2 = b;
+    s1 = 1;
+    s2 = 0;
+    t1 = 0;
+    t2 = 1;
+    ll q;
+    while (r2 > 0){
+        q = r1 / r2;
+        r = r1 - q*r2;
+        r1 = r2;
+        r2 = r;
+        s = s1 - q*s2;
+        s1 = s2;
+        s2 = s;
+        t = t1 - q*t2;
+        t1 = t2;
+        t2 = t;
     }
-    return {r.front(),{s.front(),t.front()}};
+    return{ r1, { s1, t1 } };
 }
